@@ -1,0 +1,131 @@
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LINESeedKR-Rg';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Rg.woff2') format('woff2'); /* 레귤러 폰트 URL */
+    font-weight: 400;
+}
+
+body {
+    font-family: 'LINESeedKR-Bd', 'LINESeedKR-Rg', Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+}
+
+/* Header */
+
+.header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    box-shadow: none;
+}
+
+/* Header 로고 스타일 */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.logo svg {
+    margin-right: 10px;
+}
+
+.logo .fs-4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Header 메뉴 */
+
+.navbar {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+    margin-bottom: 0px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #0090FF;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-list {
+        display: none;
+    }
+}
+
+/* 로그인 버튼 스타일 */
+.login-btn {
+    background-color: #B3D8FF;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #80b2ff;
+}
+
+/* 버튼 컨테이너 */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* 버튼 간의 간격 */
+}
+
+/* 버튼 스타일 */
+.btn-custom {
+    background-color: #c1d7fb;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 15px; /* 둥근 모서리 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* 버튼 호버 효과 */
+.btn-custom:hover {
+    background-color: #a6c1f5;
+    transform: scale(1.05);
+}
+
+/* 버튼 텍스트 중앙 정렬 */
+.btn-custom:focus {
+    outline: none;
+}
