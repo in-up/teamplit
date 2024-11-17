@@ -2,15 +2,14 @@
 <%@ page import="java.util.Date"%>
 <html>
 <head>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+	<link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="./resources/css/global.css">
+	<link rel="stylesheet" href="./resources/css/page.main.css">
 <title>팀플릿 | 홈</title>
 </head>
 <body>
 	<div class="container">
-		<%@ include file="/components/header.jsp"%>
+		<%@ include file="/resources/header.jsp"%>
 
 		<div
 			class="button-container d-flex justify-content-center align-items-center my-5">
@@ -42,7 +41,7 @@
 		</div>
 
 
-		<%@ include file="/components/footer.jsp"%>
+		<%@ include file="/resources/footer.jsp"%>
 	</div>
 </body>
 </html>
