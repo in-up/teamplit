@@ -1,27 +1,60 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./resources/css/global.css">
+<link rel="stylesheet" href="./resources/css/page.main.css">
 </head>
 <body>
-    <header class="header">
-        <a href="./welcome.jsp" class="logo d-flex align-items-center text-dark text-decoration-none">
-            <svg width="40" height="40" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="90" height="90" rx="30" fill="#0090FF"/>
-                <path d="M23.15 42.3C26.5145 42.3 29.25 39.5645 29.25 36.2C29.25 32.8355 26.5145 30.1 23.15 30.1C19.7855 30.1 17.05 32.8355 17.05 36.2C17.05 39.5645 19.7855 42.3 23.15 42.3ZM65.85 42.3C69.2145 42.3 71.95 39.5645 71.95 36.2C71.95 32.8355 69.2145 30.1 65.85 30.1C62.4855 30.1 59.75 32.8355 59.75 36.2C59.75 39.5645 62.4855 42.3 65.85 42.3ZM68.9 45.35H62.8C61.1225 45.35 59.607 46.0267 58.5014 47.1228C62.3425 49.2292 65.0684 53.0322 65.6594 57.55H71.95C73.637 57.55 75 56.187 75 54.5V51.45C75 48.0855 72.2645 45.35 68.9 45.35ZM44.5 45.35C50.3998 45.35 55.175 40.5748 55.175 34.675C55.175 28.7752 50.3998 24 44.5 24C38.6002 24 33.825 28.7752 33.825 34.675C33.825 40.5748 38.6002 45.35 44.5 45.35ZM51.82 48.4H51.0289C49.0464 49.3531 46.8447 49.925 44.5 49.925C42.1553 49.925 39.9631 49.3531 37.9711 48.4H37.18C31.1181 48.4 26.2 53.3181 26.2 59.38V62.125C26.2 64.6508 28.2492 66.7 30.775 66.7H58.225C60.7508 66.7 62.8 64.6508 62.8 62.125V59.38C62.8 53.3181 57.8819 48.4 51.82 48.4ZM30.4986 47.1228C29.393 46.0267 27.8775 45.35 26.2 45.35H20.1C16.7355 45.35 14 48.0855 14 51.45V54.5C14 56.187 15.363 57.55 17.05 57.55H23.3311C23.9316 53.0322 26.6575 49.2292 30.4986 47.1228Z" fill="white"/>
-            </svg>
-            <span class="fs-4">팀플릿</span>
-        </a>
-        
-        <nav class="navbar">
-            <ul class="nav-list">
-                <li><a href="#" class="nav-link">홈</a></li>
-                <li><a href="#" class="nav-link">팀 찾기</a></li>
-                <li><a href="#" class="nav-link">팀 만들기</a></li>
-            </ul>
-        </nav>
+	<header class="header">
+		<a href="./welcome.jsp"
+			class="logo d-flex align-items-center text-dark text-decoration-none">
+			<svg width="40" height="40" viewBox="0 0 90 90" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+<rect width="90" height="90" rx="26" fill="url(#paint0_linear_0_1)" />
+<g filter="url(#filter0_d_0_1)">
+<path
+					d="M26.1429 42.2857C29.1371 42.2857 31.5714 39.8513 31.5714 36.8571C31.5714 33.8629 29.1371 31.4286 26.1429 31.4286C23.1487 31.4286 20.7143 33.8629 20.7143 36.8571C20.7143 39.8513 23.1487 42.2857 26.1429 42.2857ZM64.1429 42.2857C67.1371 42.2857 69.5714 39.8513 69.5714 36.8571C69.5714 33.8629 67.1371 31.4286 64.1429 31.4286C61.1487 31.4286 58.7143 33.8629 58.7143 36.8571C58.7143 39.8513 61.1487 42.2857 64.1429 42.2857ZM66.8571 45H61.4286C59.9357 45 58.5871 45.6022 57.6031 46.5777C61.0214 48.4522 63.4473 51.8366 63.9732 55.8571H69.5714C71.0728 55.8571 72.2857 54.6442 72.2857 53.1429V50.4286C72.2857 47.4344 69.8513 45 66.8571 45ZM45.1429 45C50.3933 45 54.6429 40.7504 54.6429 35.5C54.6429 30.2496 50.3933 26 45.1429 26C39.8924 26 35.6429 30.2496 35.6429 35.5C35.6429 40.7504 39.8924 45 45.1429 45ZM51.6571 47.7143H50.9531C49.1888 48.5625 47.2295 49.0714 45.1429 49.0714C43.0563 49.0714 41.1054 48.5625 39.3326 47.7143H38.6286C33.2339 47.7143 28.8571 52.0911 28.8571 57.4857V59.9286C28.8571 62.1763 30.6808 64 32.9286 64H57.3571C59.6049 64 61.4286 62.1763 61.4286 59.9286V57.4857C61.4286 52.0911 57.0518 47.7143 51.6571 47.7143ZM32.6826 46.5777C31.6987 45.6022 30.35 45 28.8571 45H23.4286C20.4344 45 18 47.4344 18 50.4286V53.1429C18 54.6442 19.2129 55.8571 20.7143 55.8571H26.304C26.8384 51.8366 29.2643 48.4522 32.6826 46.5777Z"
+					fill="white" />
+</g>
+<defs>
+<filter id="filter0_d_0_1" x="11.7" y="21.7" width="66.8856"
+					height="50.6" filterUnits="userSpaceOnUse"
+					color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix" />
+<feColorMatrix in="SourceAlpha" type="matrix"
+					values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+					result="hardAlpha" />
+<feOffset dy="2" />
+<feGaussianBlur stdDeviation="3.15" />
+<feComposite in2="hardAlpha" operator="out" />
+<feColorMatrix type="matrix"
+					values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+<feBlend mode="normal" in2="BackgroundImageFix"
+					result="effect1_dropShadow_0_1" />
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1"
+					result="shape" />
+</filter>
+<linearGradient id="paint0_linear_0_1" x1="45" y1="0" x2="45" y2="90"
+					gradientUnits="userSpaceOnUse">
+<stop stop-color="#0090FF" />
+<stop offset="0.52" stop-color="#0588F0" />
+</linearGradient>
+</defs>
+</svg> <span class="fs-4">팀플릿</span>
+		</a>
 
-        <button class="login-btn">로그인</button>
-    </header>
+		<nav class="navbar">
+			<ul class="nav-list">
+				<li><a href="#" class="nav-link">홈</a></li>
+				<li><a href="#" class="nav-link">팀 찾기</a></li>
+				<li><a href="#" class="nav-link">팀 만들기</a></li>
+			</ul>
+		</nav>
+
+		<form action="login.jsp" method="get">
+			<button type="submit" class="login-btn">로그인</button>
+		</form>
+	</header>
 </body>
 </html>
