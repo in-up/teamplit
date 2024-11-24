@@ -16,7 +16,7 @@
 <body>
 
 <div class="container py-4">
-	<jsp:include page="../menu.jsp" />
+	<jsp:include page="./../resources/header.jsp" />
 	
 	 <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
@@ -61,7 +61,7 @@
 		</form>
 	
 	</div>
-	<jsp:include page="../footer.jsp" />
+	<jsp:include page="./../resources/footer.jsp" />  
 	</div>
 </body>
 </html>

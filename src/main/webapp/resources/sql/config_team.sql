@@ -14,10 +14,10 @@ CREATE TABLE Team (
 ) DEFAULT CHARSET=utf8;
 
 
-INSERT INTO Team (t_name, t_capacity, t_manager_id, t_filename, t_description, t_invite_code) VALUES
-('원팀', 6, '20210001', '1.png', '[웹프로그래밍] 원팀정신으로 1등하기', '1234'),
-('개발새발', 7, '20220006', '2.png', '[오픈소스SW실습] 개발자의 발전을, 새로운 발견을. 개발새발 팀입니다.', '1234'),
-('재개발조합', 10, '20230011', '3.png', '[지능웹설계] 재개발조합은 우리학과 개발 생태계를 송두리째 바꿀 최강의 풀스택 개발 팀입니다.', '1234');
+INSERT INTO Team (t_name, t_capacity, t_manager_id, t_filename, t_description, t_invite_code, t_date) VALUES
+('원팀', 6, '20210001', '1.png', '[웹프로그래밍] 원팀정신으로 1등하기', '1234', '2024-11-24'),
+('개발새발', 7, '20220006', '2.png', '[오픈소스SW실습] 개발자의 발전을, 새로운 발견을. 개발새발 팀입니다.', '1234', '2024-11-24'),
+('재개발조합', 10, '20230011', '3.png', '[지능웹설계] 재개발조합은 우리학과 개발 생태계를 송두리째 바꿀 최강의 풀스택 개발 팀입니다.', '1234', '2024-11-24');
 
 
 select * from team;

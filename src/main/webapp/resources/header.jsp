@@ -49,13 +49,13 @@
             <nav class="navbar navbar-expand-md justify-content-center">
                <ul class="navbar-nav d-flex align-items-center gap-4">
                   <li class="nav-item">
-                     <a href="<c:url value='/main.jsp' />" class="nav-link fw-bold fs-6">홈</a>
-                  </li>
-                  <li class="nav-item">
                      <a href="<c:url value='/teams.jsp' />" class="nav-link fw-bold fs-6">팀 찾기</a>
                   </li>
                   <li class="nav-item">
                      <a href="<c:url value='/team_create.jsp' />" class="nav-link fw-bold fs-6">팀 만들기</a>
+                  </li>
+                  <li class="nav-item">
+                     <a href="<c:url value='/my.jsp' />" class="nav-link fw-bold fs-6">참여중인 팀</a>
                   </li>
                </ul>
             </nav>

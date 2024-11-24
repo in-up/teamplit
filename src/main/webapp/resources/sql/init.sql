@@ -27,6 +27,7 @@ CREATE TABLE TeamMember (
     tm_t_id VARCHAR(10) NOT NULL,          -- 팀ID
     tm_m_id VARCHAR(10) NOT NULL,		   -- 학번
     tm_role VARCHAR(50),				   -- 역할
+    tm_date VARCHAR(10),
     PRIMARY KEY (tm_t_id, tm_m_id)         -- (팀ID + 학번 PK)
 ) DEFAULT CHARSET=utf8;
 
