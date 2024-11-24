@@ -1,65 +1,61 @@
-function CheckAddBook() {
+function CheckAddTeam() {
 
-	var bookId = document.getElementById("bookId");
-	var name = document.getElementById("name");
-	var unitPrice = document.getElementById("unitPrice");
-	var unitsInStock = document.getElementById("unitsInStock");
-	var description = document.getElementById("description");
+    var teamName = document.getElementById("teamName");
+    var teamCapacity = document.getElementById("teamCapacity");
+    var teamManagerId = document.getElementById("teamManagerId");
+    var teamDescription = document.getElementById("teamDescription");
+    var teamInviteCode = document.getElementById("teamInviteCode");
 
-	
-	
-	// 도서아아디 체크
-	if (!check(/^ISBN[0-9]{4,11}$/, bookId,
-			"[도서 코드]\nISBN과 숫자를 조합하여 5~12자까지 입력하세요\n첫 글자는 반드시 ISBN로 시작하세요"))
-		return false;
-		
-	// 도서명 체크	
-	if (name.value.length < 4 || name.value.length > 12) {
-		alert("[도서명]\n최소 4자에서 최대 50자까지 입력하세요");
-		//name.select();
-		name.focus();
-		return false;
-	}
-	// 도서 가격 체크
-	if (unitPrice.value.length == 0 || isNaN(unitPrice.value)) {
-		alert("[가격]\n숫자만 입력하세요");
-		//unitPrice.select();
-		unitPrice.focus();
-		return false;
-	}
+    if (!check(/^[A-Za-z0-9가-힣\s]+$/, teamName, "[팀명]\n팀 이름은 4글자 이상이어야 하며, '--'를 사용할 수 없습니다.")) {
+        return false;
+    }
+    if (teamName.value.length < 4) {
+        alert("[팀명]\n최소 4자 이상 입력하세요.");
+        teamName.focus();
+        return false;
+    }
+    if (teamName.value.includes("--")) {
+        alert("[팀명]\n'--'를 사용할 수 없습니다.");
+        teamName.focus();
+        return false;
+    }
 
-	if (unitPrice.value < 0) {
-		alert("[가격]\n음수를 입력할 수 없습니다");
-		//unitPrice.select();
-		unitPrice.focus();
-		return false;
-	} 
+    if (teamCapacity.value < 1 || teamCapacity.value > 30) {
+        alert("[최대 인원]\n최대 정원은 1명 이상 30명 이하로 입력해야 합니다.");
+        teamCapacity.focus();
+        return false;
+    }
 
-	// 재고 수 체크
-	if (isNaN(unitsInStock.value)) {
-		alert("[재고 수]\n숫자만 입력하세요");
-		//unitsInStock.select();
-		unitsInStock.focus();
-		return false;
-	}
-	
-	if (description.value.length < 80) {
-		alert("[상세설명]\n최소 100자이상 입력하세요");
-		//description.select();
-		description.focus();
-		return false;
-	}
-	
-	function check(regExp, e, msg) {
+    if (teamInviteCode.value.length < 4) {
+        alert("[초대 코드]\n초대 코드는 4글자 이상 입력해야 합니다.");
+        teamInviteCode.focus();
+        return false;
+    }
+    if (teamInviteCode.value.includes("--")) {
+        alert("[초대 코드]\n'--'를 사용할 수 없습니다.");
+        teamInviteCode.focus();
+        return false;
+    }
 
-		if (regExp.test(e.value)) {
-			return true;
-		}
-		alert(msg);
-		//e.select();
-		e.focus();
-		return false;
-	}
+    if (teamDescription.value.length < 60) {
+        alert("[팀 설명]\n최소 60자 이상 입력하세요.");
+        teamDescription.focus();
+        return false;
+    }
+    if (teamDescription.value.includes("--")) {
+        alert("[팀 설명]\n'--'를 사용할 수 없습니다.");
+        teamDescription.focus();
+        return false;
+    }
 
-	 document.newBook.submit()
+    document.newTeam.submit();
+}
+
+function check(regExp, e, msg) {
+    if (regExp.test(e.value)) {
+        return true;
+    }
+    alert(msg);
+    e.focus();
+    return false;
 }
