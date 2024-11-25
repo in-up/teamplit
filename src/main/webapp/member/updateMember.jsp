@@ -15,19 +15,19 @@
    SELECT * FROM MEMBER WHERE M_ID=?
    <sql:param value="<%=sessionId%>" />
 </sql:query>	
-<title>회원 수정</title>
+<title>팀플릿 | 회원 수정</title>
 </head>
 <body onload="init()">
 
 <div class="container">
    <jsp:include page="./../resources/header.jsp" />
 
- <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">회원 수정</h1>
-        <p class="col-md-8 fs-4">Membership Updating</p>      
-      </div>
+   <div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
+    <div class="container-fluid py-5">
+        <h1 class="display-5" style="font-weight: 800;">회원정보 수정</h1>
+        <p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">팀플릿 회원 정보를 수정하세요.</p>      
     </div>
+	</div>
     
 	
 	<c:forEach var="row" items="${resultSet.rows}">

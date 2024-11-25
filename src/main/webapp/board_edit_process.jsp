@@ -4,7 +4,7 @@
 <html>
    <head>
       <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-      <title>팀플릿 | 게시글 수정 처리</title>
+      <title>팀플릿 | 게시글 수정</title>
    </head>
    <body>
       <%

@@ -52,12 +52,12 @@
          <%@ include file="/resources/header.jsp" %>
 
          <!-- 페이지 상단 정보 -->
-         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-5">
-               <h1 class="display-5 fw-bold">게시글 수정</h1>
-               <p class="col-md-8 fs-4">게시글을 수정할 수 있어요.</p>
-            </div>
-         </div>
+			<div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
+				<div class="container-fluid py-5">
+					<h1 class="display-5" style="font-weight: 800;">게시글 수정</h1>
+					<p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">팀 게시판의 게시글을 수정할 수 있어요.</p>      
+				</div>
+			   </div>
 
          <!-- 글 수정 폼 -->
          <form action="board_edit_process.jsp" method="post">

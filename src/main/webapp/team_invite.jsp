@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page errorPage="exceptionNoBookId.jsp"%>
+<%@ page errorPage = "exceptionNoTeamId.jsp"%>
 <html>
    <head>
       <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
@@ -82,12 +82,12 @@
       <div class="container py-4">
          <%@ include file="/resources/header.jsp"%>
          <!-- 페이지 상단 정보 -->
-         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+         <div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
             <div class="container-fluid py-5">
-               <h1 class="display-5 fw-bold">초대하기</h1>
-               <p class="col-md-8 fs-4">새로운 팀원을 초대할 수 있어요.</p>
+                <h1 class="display-5" style="font-weight: 800;">초대하기</h1>
+                <p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">QR코드를 이용해 새로운 인원을 쉽게 초대하세요.</p>      
             </div>
-         </div>
+           </div>
 
          <!-- QR 코드 출력 영역 -->
          <div class="row justify-content-center">

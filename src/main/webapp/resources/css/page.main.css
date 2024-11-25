@@ -74,39 +74,3 @@
 .login-btn:hover {
   background-color: #80b2ff;
 }
-
-/* 버튼 컨테이너 */
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px; /* 버튼 간의 간격 */
-}
-
-/* 버튼 스타일 */
-.btn-custom {
-  background-color: #c1d7fb;
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border: none;
-  width: 200px;
-  height: 200px;
-  border-radius: 15px; /* 둥근 모서리 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-/* 버튼 호버 효과 */
-.btn-custom:hover {
-  background-color: #a6c1f5;
-  transform: scale(1.05);
-}
-
-/* 버튼 텍스트 중앙 정렬 */
-.btn-custom:focus {
-  outline: none;
-}

@@ -2,19 +2,20 @@
 <html>
 <head>
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css" />
-<title>Login</title>
+<title>팀플릿 | 로그인</title>
 </head>
 <body>
 
 <div class="container">
    <jsp:include page="./../resources/header.jsp" />
 
- <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">회원 로그인</h1>
-        <p class="col-md-8 fs-4">Membership Login</p>      
-      </div>
+	<div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
+    <div class="container-fluid py-5">
+        <h1 class="display-5" style="font-weight: 800;">로그인</h1>
+        <p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">팀플릿에 로그인하세요.</p>      
     </div>
+	</div>
+
 	
 	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">

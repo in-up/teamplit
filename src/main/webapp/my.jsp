@@ -74,17 +74,17 @@
 <html>
    <head>
       <link rel="stylesheet" href="./resources/css/bootstrap.min.css" />
-      <title>나의 팀 목록</title>
+      <title>팀플릿 | 나의 팀</title>
    </head>
    <body>
       <div class="container">
          <jsp:include page="./resources/header.jsp" />
-         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-5">
-               <h1 class="display-5 fw-bold">참여중인 팀</h1>
-               <p class="col-md-8 fs-4">현재 가입한 팀들을 확인하세요.</p>
-            </div>
-         </div>
+         <div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
+				<div class="container-fluid py-5">
+					<h1 class="display-5" style="font-weight: 800;">나의 팀</h1>
+					<p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">현재 참여중인 팀을 확인할 수 있어요.</p>      
+				</div>
+			   </div>
          <div class="row align-items-md-stretch text-center">
     		<% if (message != null && !message.isEmpty()) { %>
         		<h2 class="alert alert-info"><%= message %></h2>

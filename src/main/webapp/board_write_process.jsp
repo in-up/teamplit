@@ -4,7 +4,7 @@
 <html>
    <head>
       <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-      <title>팀플릿 | 글 작성 결과</title>
+      <title>팀플릿 | 글 작성</title>
    </head>
    <body>
       <%

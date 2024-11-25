@@ -25,7 +25,7 @@
 %>
 
 <sql:setDataSource var="dataSource"
-	url="jdbc:mysql://localhost:3306/BookMarketDB"
+	url="jdbc:mysql://localhost:3306/TeamplitDB"
 	driver="com.mysql.jdbc.Driver" user="root" password="1234" />
 
 <sql:update dataSource="${dataSource}" var="resultSet">

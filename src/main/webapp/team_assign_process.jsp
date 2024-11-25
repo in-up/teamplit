@@ -4,7 +4,7 @@
 <html>
    <head>
       <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-      <title>팀플릿 | 역할 분배 완료</title>
+      <title>팀플릿 | 역할 분배</title>
    </head>
    <body>
       <%

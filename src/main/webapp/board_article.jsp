@@ -18,7 +18,6 @@
              return;
          }
 
-         // 게시글 정보 조회
          String bTitle = "";
          String bContent = "";
          String bDate = "";
@@ -70,12 +69,12 @@
          <%@ include file="/resources/header.jsp" %>
 
          <!-- 페이지 상단 정보 -->
-         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+         <div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
             <div class="container-fluid py-5">
-               <h1 class="display-5 fw-bold">게시글 보기</h1>
-               <p class="col-md-8 fs-4">게시글의 상세 정보를 확인하세요.</p>
+                <h1 class="display-5" style="font-weight: 800;">팀 게시판</h1>
+                <p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">최고의 프로젝트를 위해 협동하세요!</p>      
             </div>
-         </div>
+           </div>
 
          <!-- 게시글 내용 -->
          <div class="card">

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page errorPage="exceptionNoBookId.jsp"%>
+<%@ page errorPage = "exceptionNoTeamId.jsp"%>
 <html>
    <head>
       <link href="./resources/css/bootstrap.min.css" rel="stylesheet">

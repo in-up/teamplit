@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.sql.*"%>
-<%@ page errorPage="exceptionNoBookId.jsp"%>
+<%@ page errorPage = "exceptionNoTeamId.jsp"%>
 <!DOCTYPE html>
 <html>
    <head>
@@ -80,12 +80,12 @@
       %>
       <div class="container">
          <%@ include file="/resources/header.jsp" %>
-         <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+         <div class="px-5 py-2 mb-5" style="background-color: #3B82F6; color: #ffffff; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.1); border-radius: 2.25rem;">
             <div class="container-fluid py-5">
-               <h1 class="display-5 fw-bold">팀 스페이스</h1>
-               <p class="col-md-8 fs-4">팀 활동을 위한 공간입니다.</p>
+                <h1 class="display-5" style="font-weight: 800;">팀 스페이스</h1>
+                <p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">팀 프로젝트를 수행하는 팀 스페이스입니다.</p>      
             </div>
-         </div>
+           </div>
          <div class="row align-items-md-stretch">
             <!-- 팀 이미지와 이름 -->
             <div class="col-md-6 text-center">
