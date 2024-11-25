@@ -35,7 +35,7 @@ CREATE TABLE Board (
     b_num int not null auto_increment,     -- 게시물번호 (자동증분)
     b_m_id varchar(10) not null,	       -- 작성자 학번
     b_m_name varchar(10) not null,		   -- 작성자 이름
-    b_t_id varchar(100) not null,		   -- 팀ID
+    b_t_id int not null,		   -- 팀ID
     b_title VARCHAR(100) NOT NULL;		   -- 글제목
     b_content text not null,	           -- 콘텐츠 (글)
     b_date varchar(30),			           -- 작성일

@@ -77,7 +77,7 @@
       <title>나의 팀 목록</title>
    </head>
    <body>
-      <div class="container py-4">
+      <div class="container">
          <jsp:include page="./resources/header.jsp" />
          <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">

@@ -39,6 +39,7 @@
             Connection conn = null;
             PreparedStatement stmt = null;
             ResultSet rs = null;
+            int currentMembers = 0;  // 현재 정원
             
             try {
             	String url = "jdbc:mysql://localhost:3306/TeamplitDB";
@@ -55,6 +56,16 @@
             	
             	if (rs.next()) {
             		managerName = rs.getString("m_name");  // 팀장 이름
+            	}
+            	
+            	// 현재 정원 (현재 팀의 멤버 수) 조회
+            	sql = "SELECT COUNT(*) AS member_count FROM TeamMember WHERE tm_t_id = ?";
+            	stmt = conn.prepareStatement(sql);
+            	stmt.setInt(1, team.getT_id());
+            	rs = stmt.executeQuery();
+            	
+            	if (rs.next()) {
+            		currentMembers = rs.getInt("member_count");  // 현재 정원
             	}
             } catch (SQLException e) {
             	e.printStackTrace();
@@ -79,9 +90,8 @@
                <p><b>팀번호</b> : <span class="badge text-bg-danger"> <%=team.getT_id()%></span></p>
                <p><b>팀장 학번</b> : <%=team.getT_manager_id()%></p>
                <p><b>팀장</b> : <%=managerName%></p>
-               <!-- 팀장 이름 표시 -->
-               <p><b>현재 정원</b> : </p>
-               <p><b>최대 정원</b> : <%=team.getT_capacity()%></p>
+               <p><b>참여 인원</b> : <%=currentMembers%>명 / <%=team.getT_capacity()%>명</p>
+               <p><b>입장 가능 여부</b> : <%= (currentMembers >= team.getT_capacity()) ? "입장 불가" : "입장 가능" %>
                <p><b>생성일</b> : <%=team.getT_date()%></p>
                <p>
                <form name="joinForm" action="./team_join.jsp?id=<%=team.getT_id()%>" method="post">
@@ -92,7 +102,8 @@
                      <input type="text" class="form-control" id="inviteCode" name="inviteCode" placeholder="초대 코드를 입력하세요" required>
                   </div>
                   <!-- 참여하기 버튼 -->
-                  <button type="submit" class="btn btn-success">참여하기 &raquo;</button> 
+                  <button type="submit" class="btn btn-success" 
+    				<%= (currentMembers >= team.getT_capacity()) ? "disabled" : "" %>>참여하기 &raquo;</button>
                   <a href="./teams.jsp" class="btn btn-secondary"> 다른 팀 찾기 &raquo;</a>
                </form>
                </p>

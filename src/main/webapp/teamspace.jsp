@@ -76,7 +76,7 @@
              return;
          }
       %>
-      <div class="container py-4">
+      <div class="container">
          <%@ include file="/resources/header.jsp" %>
          <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
@@ -94,7 +94,7 @@
             <div class="col-md-6">
                <h4 class="mb-4">팀 메뉴</h4>
                <div class="d-grid gap-3">
-                  <a href="role_assign.jsp?teamId=<%=teamId%>" class="btn btn-primary">역할 나누기</a>
+                  <a href="role_assign.jsp?teamId=<%=teamId%>" class="btn btn-primary">역할 분배</a>
                   <a href="team_edit.jsp?teamId=<%=teamId%>" class="btn btn-secondary">팀 정보 수정</a>
                   <a href="team_members.jsp?teamId=<%=teamId%>" class="btn btn-success">팀원 관리</a>
                   <a href="team_board.jsp?teamId=<%=teamId%>" class="btn btn-warning">팀 게시판</a>

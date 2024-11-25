@@ -46,7 +46,8 @@
 		if (conn != null)
 			conn.close();
 		%>	
-		</div>	
+		</div>
+		<a href="./team_create.jsp" class="btn btn-primary">팀 만들기 &raquo;</a>
 		<%@ include file="/resources/footer.jsp"%>  
   </div>
 </body>
