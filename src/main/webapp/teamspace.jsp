@@ -96,7 +96,13 @@
             <div class="col-md-6">
                <h4 class="mb-4">팀 메뉴</h4>
                <div class="d-grid gap-3">
-                  <a href="team_assign.jsp?id=<%=teamId%>" class="btn btn-primary">역할 분배</a>
+               <%
+                     if (sessionId != null && sessionId.equals(teamManagerId)) {
+                  %>
+                     <a href="team_assign.jsp?id=<%=teamId%>" class="btn btn-success">역할 분배</a>
+                  <%
+                     }
+                  %>
                   <a href="team_members.jsp?id=<%=teamId%>" class="btn btn-secondary">팀원 목록</a>
                   <a href="board.jsp?id=<%=teamId%>" class="btn btn-secondary">팀 게시판</a>
                   <a href="team_invite.jsp?id=<%=teamId%>" class="btn btn-warning">팀스페이스 초대하기</a>
