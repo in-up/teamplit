@@ -7,15 +7,6 @@
    <head>
       <link href = "./resources/css/bootstrap.min.css" rel="stylesheet">
       <title>팀플릿 | 팀 살펴보기</title>
-      <script type="text/javascript">
-         function addToCart() {
-         	if (confirm("상품을 장바구니에 추가하시겠습니까?")) {
-         		document.addForm.submit();
-         	} else {		
-         		document.addForm.reset();
-         	}
-         }
-      </script>
    </head>
    <body>
       <div class="container py-4">
@@ -28,6 +19,7 @@
          </div>
          <%
             String id = request.getParameter("id");
+            String code = request.getParameter("code");  // URL에서 code 파라미터를 받음
             TeamRepository dao = TeamRepository.getInstance();
             Team team = dao.getTeamById(id);
             
@@ -79,7 +71,7 @@
             		e.printStackTrace();
             	}
             }
-            %>
+         %>
          <div class="row align-items-md-stretch">
             <div class="col-md-5">
                <img src="./resources/images/<%=team.getT_filename()%>" style="width: 70%">
@@ -91,7 +83,7 @@
                <p><b>팀장 학번</b> : <%=team.getT_manager_id()%></p>
                <p><b>팀장</b> : <%=managerName%></p>
                <p><b>참여 인원</b> : <%=currentMembers%>명 / <%=team.getT_capacity()%>명</p>
-               <p><b>입장 가능 여부</b> : <%= (currentMembers >= team.getT_capacity()) ? "입장 불가" : "입장 가능" %>
+               <p><b>입장 가능 여부</b> : <%= (currentMembers >= team.getT_capacity()) ? "입장 불가" : "입장 가능" %></p>
                <p><b>생성일</b> : <%=team.getT_date()%></p>
                <p>
                <form name="joinForm" action="./team_join.jsp?id=<%=team.getT_id()%>" method="post">
@@ -99,7 +91,8 @@
                   <!-- 초대 코드 입력란 추가 -->
                   <div class="mb-3">
                      <label for="inviteCode" class="form-label">초대 코드</label>
-                     <input type="text" class="form-control" id="inviteCode" name="inviteCode" placeholder="초대 코드를 입력하세요" required>
+                     <input type="text" class="form-control" id="inviteCode" name="inviteCode" placeholder="초대 코드를 입력하세요"
+                        value="<%= (code != null) ? code : "" %>" required>
                   </div>
                   <!-- 참여하기 버튼 -->
                   <button type="submit" class="btn btn-success" 

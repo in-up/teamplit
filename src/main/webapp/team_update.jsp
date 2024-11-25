@@ -5,117 +5,103 @@
 <link rel ="stylesheet" href ="./resources/css/bootstrap.min.css" />
 
 <title>도서 수정</title>
+    <script>
+        function confirmDelete() {
+            if (confirm("팀을 영구적으로 삭제할까요?")) {
+                window.location.href = "team_delete.jsp?id=" + document.getElementById('t_id').value;
+            } else {
+                return false;
+            }
+        }
+    </script>
 </head>
 <body>
-<div class="container py-4">
+<div class="container">
    <%@ include file="/resources/header.jsp"%>	
 
    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
       <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">도서 수정</h1>
-        <p class="col-md-8 fs-4">Book Updating</p>      
+        <h1 class="display-5 fw-bold">팀 정보 수정</h1>
+        <p class="col-md-8 fs-4">팀 정보를 업데이트할 수 있어요.</p>      
       </div>
     </div>
   <%@ include file="dbconn.jsp"%>
   <%
-		String bookId = request.getParameter("id");
+		String teamId = request.getParameter("id");
 
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 	
-		String sql = "select * from book where b_id = ?";
+		String sql = "select * from team where t_id = ?";
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, bookId);
+		pstmt.setString(1, teamId);
 		rs = pstmt.executeQuery();
 		if (rs.next()) {
 	%>		
 	 <div class="row align-items-md-stretch">	  	
 		
-		<div class="col-md-5">
-				<img src="./resources/images/<%=rs.getString("b_filename")%>" alt="image" style="width: 100%" />
+		<div class="col-md-5 text-center">
+				<img src="./resources/images/<%=rs.getString("t_filename")%>" alt="image" style="width: 70%" />
 			</div>
 		<div class="col-md-7">	
-		<form name="newBook" action="./processUpdateBook.jsp" method="post" enctype ="multipart/form-data">
+		<form name="newTeam" action="./team_update_process.jsp" method="post" enctype ="multipart/form-data">
 		
 			
 			<div class="mb-3 row">
-				<label class="col-sm-2">도서코드</label>
+				<label class="col-sm-2">팀ID</label>
 				<div class="col-sm-5">
-					<input type="text" name="bookId" id="bookId" class="form-control" value='<%=rs.getString("b_id")%>'>
+					<input type="text" name="t_id" id="t_id" class="form-control" value='<%=rs.getString("t_id")%>' readonly>
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label class="col-sm-2">도서명</label>
+				<label class="col-sm-2">팀명</label>
 				<div class="col-sm-5">
-					<input type="text" name="name" id="name" class="form-control" value='<%=rs.getString("b_name")%>'>
+					<input type="text" name="t_name" id="t_name" class="form-control" value='<%=rs.getString("t_name")%>'>
 				</div>
 			</div>
 				<div class="mb-3 row">
-				<label class="col-sm-2">가격</label>
+				<label class="col-sm-2">최대 인원</label>
 				<div class="col-sm-5">
-					<input type="text" name="unitPrice"  id="unitPrice"class="form-control" value='<%=rs.getString("b_unitPrice")%>'>
+					<input type="text" name="t_capacity"  id="t_capacity" class="form-control" value='<%=rs.getString("t_capacity")%>'>
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label class="col-sm-2">저자</label>
+				<label class="col-sm-2">팀장</label>
 				<div class="col-sm-5">
-					<input type="text" name="author" class="form-control" value='<%=rs.getString("b_author")%>'>
+					<input type="text" name="t_manager_id" class="form-control" value='<%=rs.getString("t_manager_id")%>' readonly>
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label class="col-sm-2">출판사</label>
+				<label class="col-sm-2">생성일</label>
 				<div class="col-sm-5">
-					<input type="text" name="publisher" class="form-control" value='<%=rs.getString("b_publisher")%>'>
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label class="col-sm-2">출판일</label>
-				<div class="col-sm-5">
-					<input type="text" name="releaseDate" class="form-control" value='<%=rs.getString("b_releaseDate")%>'>
+					<input type="text" name="t_date" class="form-control" value='<%=rs.getString("t_date")%>' readonly>
 				</div>
 			</div>
 	
 			<div class="mb-3 row">
-				<label class="col-sm-2">상세정보</label>
+				<label class="col-sm-2">팀 설명</label>
 				<div class="col-sm-8">
-					<textarea  name="description" id="description" cols="50" rows="2"
-						class="form-control" placeholder="100자 이상 적어주세요"><%=rs.getString("b_description")%></textarea>
-				</div>
-			</div>			
-			<div class="mb-3 row">
-				<label class="col-sm-2">분류</label>
-				<div class="col-sm-5">
-					<input type="text" name="category" class="form-control" value='<%=rs.getString("b_category")%>'>
-				</div>
-			</div>
-				<div class="mb-3 row">
-				<label class="col-sm-2">재고수</label>
-				<div class="col-sm-5">
-					<input type="text" name="unitsInStock" id="unitsInStock"class="form-control" value='<%=rs.getString("b_unitsInStock")%>'>
+					<textarea  name="t_description" id="t_description" cols="50" rows="2"
+						class="form-control" placeholder="60자 이상 작성해야 합니다."><%=rs.getString("t_description")%></textarea>
 				</div>
 			</div>
 			<div class="mb-3 row">
-				<label class="col-sm-2">상태</label>
+				<label class="col-sm-2">대표 이미지</label>
 				<div class="col-sm-8">
-					<input type="radio" name="condition" value="New " >신규도서 
-					<input type="radio" name="condition" value="Old" > 중고도서 
-					<input type="radio" name="condition" value="EBook" > E-Book
-				</div>				
-			</div>		
-			
-			<div class="mb-3 row">
-				<label class="col-sm-2">이미지</label>
-				<div class="col-sm-8">
-					<input type="file" name="bookImage" class="form-control">
+					<input type="file" name="t_filename" class="form-control">
 				</div>
 			</div>
 			
 			<div class="mb-3 row">
 				<div class="col-sm-offset-2 col-sm-10 ">
-					<input type="submit" class="btn btn-primary" value="등록 " >
+					<input type="submit" class="btn btn-primary" value="수정하기" >
 				</div>
 			</div>
 		</form>
+		            <!-- 삭제 버튼 -->
+            <div class="mt-3">
+                <button type="button" class="btn btn-danger" onclick="confirmDelete()">삭제하기</button>
+            </div>
 	</div>
 	<%
 		}
@@ -128,6 +114,7 @@
 	%>
 	<%@ include file="/resources/footer.jsp"%>
 </div>	
+</div>
 
 </body>
 </html>

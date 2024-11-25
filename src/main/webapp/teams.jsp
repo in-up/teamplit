@@ -35,7 +35,7 @@
 				<p><%= rs.getString("t_description").length() > 60 ? rs.getString("t_description").substring(0, 60) : rs.getString("t_description") %>....
 				</p>
 				<p>최대 <%=rs.getString("t_capacity")%>명
-				<p><a href="./team.jsp?id=<%=rs.getString("t_id")%>" class="btn btn-secondary" role="button"> 참여하기 &raquo;</a>	</div>
+				<p><a href="./team_info.jsp?id=<%=rs.getString("t_id")%>" class="btn btn-secondary" role="button"> 참여하기 &raquo;</a>	</div>
 		</div>			
 		<%
 			}

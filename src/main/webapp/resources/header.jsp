@@ -70,7 +70,7 @@
                      <div class="d-flex justify-content-end gap-3">
                         <form action="<c:url value='/member/updateMember.jsp' />" method="get" class="d-inline">
                            <button type="submit" class="btn btn-link text-black text-decoration-none fs-6">
-                           ${user.m_name}님
+                           ${user.m_name} 님
                            </button>
                         </form>
                         <form action="<c:url value='/member/logoutMember.jsp' />" method="post" class="d-inline">

@@ -6,104 +6,71 @@
 <%@ include file="dbconn.jsp" %>
 
 <%
-	request.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding("UTF-8");
 
+    // 업로드 경로 설정
+    String realFolder = "C:\\Users\\Ahn\\eclipse-workspace\\teamplit\\src\\main\\webapp\\resources\\images"; 
+    String encType = "utf-8";  // 인코딩 타입
+    int maxSize = 5 * 1024 * 1024;  // 최대 업로드 파일 크기 5Mb
 
-	String filename = "";
-	//String realFolder = "C:\\upload"; //웹 어플리케이션상의 절대 경로
+    // MultipartRequest 생성 (파일 업로드 처리)
+    MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
 
+    // 폼에서 받은 파라미터 값
+    String t_id = multi.getParameter("t_id");
+    String t_name = multi.getParameter("t_name");
+    String t_capacity = multi.getParameter("t_capacity");
+    String t_manager_id = multi.getParameter("t_manager_id");
+    String t_date = multi.getParameter("t_date");
+    String t_description = multi.getParameter("t_description");
+    String t_filename = multi.getParameter("t_filename");
 
-	String realFolder = "C:\\Users\\user\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\BookMarket\\resources\\images";
-	String encType = "utf-8"; //인코딩 타입
-	int maxSize = 5 * 1024 * 1024; //최대 업로드될 파일의 크기5Mb
-	
-	MultipartRequest multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+    // 파일 업로드된 이름 가져오기
+    Enumeration files = multi.getFileNames();
+    String fname = (String) files.nextElement();
+    String fileName = multi.getFilesystemName(fname);
 
-	
-	
-	String bookId = multi.getParameter("bookId");
-	String name = multi.getParameter("name");
-	String unitPrice = multi.getParameter("unitPrice");
-	String author = multi.getParameter("author");
-	String publisher = multi.getParameter("publisher");
-	String releaseDate = multi.getParameter("releaseDate");	
-	String description = multi.getParameter("description");	
-	String category = multi.getParameter("category");
-	String unitsInStock = multi.getParameter("unitsInStock");
-	String condition = multi.getParameter("condition");
+    // 팀 정보 업데이트 처리
+    PreparedStatement pstmt = null;
+    ResultSet rs = null;
 
-	Enumeration files = multi.getFileNames();
-	String fname = (String) files.nextElement();
-	String fileName = multi.getFilesystemName(fname);
-	
-	int price;
+    // 팀 ID로 팀 정보 조회
+    String sql = "SELECT * FROM Team WHERE t_id = ?";
+    pstmt = conn.prepareStatement(sql);
+    pstmt.setString(1, t_id);  // 팀 ID를 파라미터로 설정
+    rs = pstmt.executeQuery();
 
-	if (unitPrice.isEmpty())
-		price = 0;
-	else
-		price = Integer.valueOf(unitPrice);
+    if (rs.next()) {
+        // 팀이 존재할 경우, 파일이 업로드 되었는지 확인
+        if (fileName != null) {
+            // 파일이 업로드 된 경우: 파일 이름도 업데이트
+            sql = "UPDATE Team SET t_name=?, t_capacity=?, t_manager_id=?, t_description=?, t_date=?, t_filename=? WHERE t_id=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, t_name);
+            pstmt.setInt(2, Integer.parseInt(t_capacity));  // 최대 정원은 정수로 변환
+            pstmt.setString(3, t_manager_id);
+            pstmt.setString(4, t_description);
+            pstmt.setString(5, t_date);
+            pstmt.setString(6, fileName);  // 파일 이름 업데이트
+            pstmt.setInt(7, Integer.parseInt(t_id));  // 팀 ID로 업데이트
+            pstmt.executeUpdate();
+        } else {
+            // 파일이 업로드 되지 않은 경우: 파일 이름을 업데이트하지 않음
+            sql = "UPDATE Team SET t_name=?, t_capacity=?, t_manager_id=?, t_description=?, t_date=? WHERE t_id=?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, t_name);
+            pstmt.setInt(2, Integer.parseInt(t_capacity));  // 최대 정원은 정수로 변환
+            pstmt.setString(3, t_manager_id);
+            pstmt.setString(4, t_description);
+            pstmt.setString(5, t_date);
+            pstmt.setInt(6, Integer.parseInt(t_id));  // 팀 ID로 업데이트
+            pstmt.executeUpdate();
+        }
+    }
 
-	long stock;
+    if (pstmt != null) pstmt.close();
+    if (conn != null) conn.close();
 
-	if (unitsInStock.isEmpty())
-		stock = 0;
-	else
-		stock = Long.valueOf(unitsInStock);
-	
-	
-	
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-	
-	String sql = "select * from book where b_id = ?";
-	pstmt = conn.prepareStatement(sql);
-	pstmt.setString(1, bookId);
-	rs = pstmt.executeQuery();	
-	
-	
-	if (rs.next()) {		
-		if (fileName != null) {
-			sql = "UPDATE book SET b_name=?, b_unitPrice=?, b_author=?, b_description=?, b_publisher=?, b_category=?, b_unitsInStock=?, b_releaseDate=?, b_condition=?, b_fileName=? WHERE b_id=?";	
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setInt(2, price);
-			pstmt.setString(3, author);
-			pstmt.setString(4, description);
-			pstmt.setString(5, publisher);
-			pstmt.setString(6, category);
-			pstmt.setLong(7, stock);
-			pstmt.setString(8, releaseDate);		
-			pstmt.setString(9, condition);	
-			pstmt.setString(10, fileName);	
-			pstmt.setString(11, bookId);	
-			pstmt.executeUpdate();
-			
-					
-		} else {
-			sql = "UPDATE book SET b_name=?, b_unitPrice=?, b_author=?, b_description=?, b_publisher=?, b_category=?, b_unitsInStock=?, b_releaseDate=?, b_condition=? WHERE b_id=?";	
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setInt(2, price);
-			pstmt.setString(3, author);
-			pstmt.setString(4, description);
-			pstmt.setString(5, publisher);
-			pstmt.setString(6, category);
-			pstmt.setLong(7, stock);
-			pstmt.setString(8, releaseDate);		
-			pstmt.setString(9, condition);			
-			pstmt.setString(10, bookId);	
-			pstmt.executeUpdate();
-		}		
-	}
-	
-
-	
-	if (pstmt != null)
-		pstmt.close();
-	if (conn != null)
-		conn.close();
-	
-
-	response.sendRedirect("editBook.jsp?edit=update");
+    response.sendRedirect("teamspace.jsp?id=" + t_id);
 
 %>

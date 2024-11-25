@@ -1,11 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page errorPage="exceptionNoBookId.jsp"%>
-<!DOCTYPE html>
 <html>
    <head>
       <link href="./resources/css/bootstrap.min.css" rel="stylesheet">
-      <title>팀플릿 | 팀스페이스</title>
+      <title>팀플릿 | 팀스페이스 초대하기</title>
    </head>
    <body>
       <%
@@ -23,6 +22,7 @@
          String teamName = "";
          String teamImage = "";
          String teamManagerId = ""; // 팀장 ID를 저장할 변수
+         String inviteCode = "";  // 초대 코드
 
          Connection conn = null;
          PreparedStatement stmt = null;
@@ -48,7 +48,7 @@
 
              // 팀 정보 가져오기
              if (isTeamMember) {
-                 String teamInfoSql = "SELECT t_name, t_filename, t_manager_id FROM Team WHERE t_id = ?";
+                 String teamInfoSql = "SELECT t_name, t_filename, t_manager_id, t_invite_code FROM Team WHERE t_id = ?";
                  stmt = conn.prepareStatement(teamInfoSql);
                  stmt.setString(1, teamId);
                  rs = stmt.executeQuery();
@@ -57,6 +57,7 @@
                      teamName = rs.getString("t_name");
                      teamImage = rs.getString("t_filename");
                      teamManagerId = rs.getString("t_manager_id"); // 팀장 ID
+                     inviteCode = rs.getString("t_invite_code");  // 초대 코드
                  }
              }
          } catch (Exception e) {
@@ -78,40 +79,25 @@
              return;
          }
       %>
-      <div class="container">
-         <%@ include file="/resources/header.jsp" %>
+      <div class="container py-4">
+         <%@ include file="/resources/header.jsp"%>
+         <!-- 페이지 상단 정보 -->
          <div class="p-5 mb-4 bg-body-tertiary rounded-3">
             <div class="container-fluid py-5">
-               <h1 class="display-5 fw-bold">팀 스페이스</h1>
-               <p class="col-md-8 fs-4">팀 활동을 위한 공간입니다.</p>
+               <h1 class="display-5 fw-bold">초대하기</h1>
+               <p class="col-md-8 fs-4">새로운 팀원을 초대할 수 있어요.</p>
             </div>
          </div>
-         <div class="row align-items-md-stretch">
-            <!-- 팀 이미지와 이름 -->
-            <div class="col-md-6 text-center">
-               <img src="./resources/images/<%=teamImage%>" style="width: 50%; border-radius: 10px;">
-               <h3 class="mt-3"><b><%= teamName %></b></h3>
-            </div>
-            <!-- 버튼 섹션 -->
-            <div class="col-md-6">
-               <h4 class="mb-4">팀 메뉴</h4>
-               <div class="d-grid gap-3">
-                  <a href="team_assign.jsp?id=<%=teamId%>" class="btn btn-primary">역할 분배</a>
-                  <a href="team_members.jsp?id=<%=teamId%>" class="btn btn-secondary">팀원 목록</a>
-                  <a href="board.jsp?id=<%=teamId%>" class="btn btn-secondary">팀 게시판</a>
-                  <a href="team_invite.jsp?id=<%=teamId%>" class="btn btn-warning">팀스페이스 초대하기</a>
-                  <!-- 팀장일 경우 -->
-                  <%
-                     if (sessionId != null && sessionId.equals(teamManagerId)) {
-                  %>
-                     <a href="team_update.jsp?id=<%=teamId%>" class="btn btn-danger">팀 정보 수정</a>
-                  <%
-                     }
-                  %>
-               </div>
+
+         <!-- QR 코드 출력 영역 -->
+         <div class="row justify-content-center">
+            <div class="col-md-4 text-center">
+               <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://teamplit.cafe24.com/team_info.jsp?id=<%= teamId %>%26code=<%= inviteCode %>" alt="팀 초대 QR 코드">
+               <p class="mt-3">QR 코드를 스캔하여 팀에 참여하세요!</p>
             </div>
          </div>
-         <%@ include file="/resources/footer.jsp" %>
+         <a href="./teamspace.jsp?id=<%= teamId %>" class="btn btn-primary">팀스페이스로 돌아가기 &raquo;</a>
+         <%@ include file="/resources/footer.jsp"%>
       </div>
    </body>
 </html>
