@@ -17,7 +17,6 @@
                 <p class="col-md-8 fs-5 fw-bold" style="color: #ffffff;">새로운 팀에 참여할 수 있어요.</p>      
             </div>
            </div>
-         </div>
          <%
             String id = request.getParameter("id");
             String code = request.getParameter("code");  // URL에서 code 파라미터를 받음

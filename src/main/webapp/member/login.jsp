@@ -19,7 +19,7 @@
 	
 	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
-			<h3 class="form-signin-heading">Please sign in</h3>
+			<h3 class="form-signin-heading">팀플릿에 오신 걸 환영합니다.</h3>
 			<%
 				String error = request.getParameter("error");
 				if (error != null) {
@@ -31,11 +31,11 @@
   			<form class="form-signin" action="processLoginMember.jsp" method="post">
   
     			<div class="form-floating mb-3 row">     
-      				<input type="text" class="form-control" name='id' id="floatingInput" placeholder="ID" required autofocus>
+      				<input type="text" class="form-control" name='id' id="floatingInput" placeholder="학번" required autofocus>
       				<label for="floatingInput">ID</label>      
     			</div>
     			<div class="form-floating  mb-3 row">     
-     	 			<input type="password" class="form-control" name='password' placeholder="Password">
+     	 			<input type="password" class="form-control" name='password' placeholder="비밀번호">
     				 <label for="floatingPassword">Password</label>
 			</div>
 

@@ -22,4 +22,11 @@ INSERT INTO Team (t_name, t_capacity, t_manager_id, t_filename, t_description, t
 
 select * from team;
 
+UPDATE Team
+SET t_filename = '4.png'
+WHERE t_id = 4;
+
+DELETE FROM Team WHERE t_id = 4;
+
+
 --drop table team;
