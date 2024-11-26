@@ -8,7 +8,6 @@
    </head>
    <body>
       <%
-         // 1. 로그인 체크
          String sessionId = (String) session.getAttribute("sessionId");
          String teamId = request.getParameter("id");
 
@@ -17,12 +16,11 @@
              return;
          }
 
-         // 2. 세션 ID로 TeamMember에 포함 여부 확인
          boolean isTeamMember = false;
          String teamName = "";
          String teamImage = "";
-         String teamManagerId = ""; // 팀장 ID를 저장할 변수
-         String inviteCode = "";  // 초대 코드
+         String teamManagerId = "";
+         String inviteCode = "";
 
          Connection conn = null;
          PreparedStatement stmt = null;
@@ -35,7 +33,6 @@
              Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection(url, user, password);
 
-             // 팀 멤버 확인 쿼리
              String memberCheckSql = "SELECT 1 FROM TeamMember WHERE tm_t_id = ? AND tm_m_id = ?";
              stmt = conn.prepareStatement(memberCheckSql);
              stmt.setString(1, teamId);
@@ -46,7 +43,6 @@
                  isTeamMember = true;
              }
 
-             // 팀 정보 가져오기
              if (isTeamMember) {
                  String teamInfoSql = "SELECT t_name, t_filename, t_manager_id, t_invite_code FROM Team WHERE t_id = ?";
                  stmt = conn.prepareStatement(teamInfoSql);
@@ -56,8 +52,8 @@
                  if (rs.next()) {
                      teamName = rs.getString("t_name");
                      teamImage = rs.getString("t_filename");
-                     teamManagerId = rs.getString("t_manager_id"); // 팀장 ID
-                     inviteCode = rs.getString("t_invite_code");  // 초대 코드
+                     teamManagerId = rs.getString("t_manager_id");
+                     inviteCode = rs.getString("t_invite_code"); 
                  }
              }
          } catch (Exception e) {
@@ -72,7 +68,7 @@
              }
          }
 
-         // 팀 멤버가 아닐 경우
+         // 팀원이 아닌 경우 리다이렉트
          if (!isTeamMember) {
              out.println("<script>alert('팀에 포함되어 있지 않습니다. 메인 페이지로 이동합니다.');</script>");
              response.sendRedirect("main.jsp?msg=1");

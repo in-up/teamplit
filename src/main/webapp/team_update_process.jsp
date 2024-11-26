@@ -41,29 +41,27 @@
     rs = pstmt.executeQuery();
 
     if (rs.next()) {
-        // 팀이 존재할 경우, 파일이 업로드 되었는지 확인
         if (fileName != null) {
-            // 파일이 업로드 된 경우: 파일 이름도 업데이트
             sql = "UPDATE Team SET t_name=?, t_capacity=?, t_manager_id=?, t_description=?, t_date=?, t_filename=? WHERE t_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, t_name);
-            pstmt.setInt(2, Integer.parseInt(t_capacity));  // 최대 정원은 정수로 변환
+            pstmt.setInt(2, Integer.parseInt(t_capacity));
             pstmt.setString(3, t_manager_id);
             pstmt.setString(4, t_description);
             pstmt.setString(5, t_date);
             pstmt.setString(6, fileName);  // 파일 이름 업데이트
-            pstmt.setInt(7, Integer.parseInt(t_id));  // 팀 ID로 업데이트
+            pstmt.setInt(7, Integer.parseInt(t_id)); 
             pstmt.executeUpdate();
         } else {
             // 파일이 업로드 되지 않은 경우: 파일 이름을 업데이트하지 않음
             sql = "UPDATE Team SET t_name=?, t_capacity=?, t_manager_id=?, t_description=?, t_date=? WHERE t_id=?";
             pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, t_name);
-            pstmt.setInt(2, Integer.parseInt(t_capacity));  // 최대 정원은 정수로 변환
+            pstmt.setInt(2, Integer.parseInt(t_capacity));
             pstmt.setString(3, t_manager_id);
             pstmt.setString(4, t_description);
             pstmt.setString(5, t_date);
-            pstmt.setInt(6, Integer.parseInt(t_id));  // 팀 ID로 업데이트
+            pstmt.setInt(6, Integer.parseInt(t_id));  
             pstmt.executeUpdate();
         }
     }

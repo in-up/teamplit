@@ -26,7 +26,7 @@
              Class.forName("com.mysql.jdbc.Driver");
              Connection conn = DriverManager.getConnection(url, user, password);
 
-             // 작성자 이름 가져오기
+             // 작성자 이름 조회
              String sql = "SELECT m_name FROM Member WHERE m_id = ?";
              PreparedStatement stmt = conn.prepareStatement(sql);
              stmt.setString(1, sessionId);

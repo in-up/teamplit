@@ -9,7 +9,6 @@
    </head>
    <body>
       <%
-         // 1. 로그인 체크
          String sessionId = (String) session.getAttribute("sessionId");
          String teamId = request.getParameter("id");
 
@@ -18,11 +17,10 @@
              return;
          }
 
-         // 2. 세션 ID로 TeamMember에 포함 여부 확인
          boolean isTeamMember = false;
          String teamName = "";
          String teamImage = "";
-         String teamManagerId = ""; // 팀장 ID를 저장할 변수
+         String teamManagerId = "";
 
          Connection conn = null;
          PreparedStatement stmt = null;
@@ -87,12 +85,10 @@
             </div>
            </div>
          <div class="row align-items-md-stretch">
-            <!-- 팀 이미지와 이름 -->
             <div class="col-md-6 text-center">
                <img src="./resources/images/<%=teamImage%>" style="width: 50%; border-radius: 10px;">
                <h3 class="mt-3"><b><%= teamName %></b></h3>
             </div>
-            <!-- 버튼 섹션 -->
             <div class="col-md-6">
                <h4 class="mb-4">팀 메뉴</h4>
                <div class="d-grid gap-3">
@@ -106,7 +102,7 @@
                   <a href="team_members.jsp?id=<%=teamId%>" class="btn btn-secondary">팀원 목록</a>
                   <a href="board.jsp?id=<%=teamId%>" class="btn btn-secondary">팀 게시판</a>
                   <a href="team_invite.jsp?id=<%=teamId%>" class="btn btn-warning">팀스페이스 초대하기</a>
-                  <!-- 팀장일 경우 -->
+                  <!-- 팀장 전용 -->
                   <%
                      if (sessionId != null && sessionId.equals(teamManagerId)) {
                   %>

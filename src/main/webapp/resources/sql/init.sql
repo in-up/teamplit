@@ -1,5 +1,3 @@
-USE TeamplitDB;
-
 CREATE TABLE Member (
     m_id VARCHAR(10) NOT NULL,             -- 학번
     m_password VARCHAR(16) NOT NULL,       -- 비밀번호
@@ -25,20 +23,20 @@ CREATE TABLE Team (
 
 CREATE TABLE TeamMember (
     tm_t_id VARCHAR(10) NOT NULL,          -- 팀ID
-    tm_m_id VARCHAR(10) NOT NULL,		   -- 학번
-    tm_role VARCHAR(50),				   -- 역할
+    tm_m_id VARCHAR(10) NOT NULL,          -- 학번
+    tm_role VARCHAR(50),                   -- 역할
     tm_date VARCHAR(10),
     PRIMARY KEY (tm_t_id, tm_m_id)         -- (팀ID + 학번 PK)
 ) DEFAULT CHARSET=utf8;
 
 CREATE TABLE Board (
-    b_num int not null auto_increment,     -- 게시물번호 (자동증분)
-    b_m_id varchar(10) not null,	       -- 작성자 학번
-    b_m_name varchar(10) not null,		   -- 작성자 이름
-    b_t_id int not null,		   -- 팀ID
-    b_title VARCHAR(100) NOT NULL;		   -- 글제목
-    b_content text not null,	           -- 콘텐츠 (글)
-    b_date varchar(30),			           -- 작성일
-    b_hit int,				               -- 조회수
+    b_num INT NOT NULL AUTO_INCREMENT,     -- 게시물번호 (자동증분)
+    b_m_id VARCHAR(10) NOT NULL,           -- 작성자 학번
+    b_m_name VARCHAR(10) NOT NULL,         -- 작성자 이름
+    b_t_id INT NOT NULL,                   -- 팀ID
+    b_title VARCHAR(100) NOT NULL,         -- 글제목
+    b_content TEXT NOT NULL,               -- 콘텐츠 (글)
+    b_date VARCHAR(30),                    -- 작성일
+    b_hit INT,                             -- 조회수
     PRIMARY KEY (b_num)
-)default CHARSET=utf8;
+) DEFAULT CHARSET=utf8;

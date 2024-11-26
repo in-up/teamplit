@@ -98,7 +98,6 @@
 				</div>
 			</div>
 		</form>
-		            <!-- 삭제 버튼 -->
             <div class="mt-3">
                 <button type="button" class="btn btn-danger" onclick="confirmDelete()">삭제하기</button>
             </div>

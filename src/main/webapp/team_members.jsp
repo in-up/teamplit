@@ -9,7 +9,6 @@
    </head>
    <body>
       <%
-         // 1. 로그인 체크
          String sessionId = (String) session.getAttribute("sessionId");
          String teamId = request.getParameter("id");
 
@@ -24,8 +23,8 @@
          PreparedStatement stmt = null;
          ResultSet rs = null;
 
-         List<Map<String, String>> teamMembers = new ArrayList<>();  // teamMembers 리스트 초기화
-         boolean isMember = false; // 사용자가 팀원 목록에 포함되어 있는지 체크
+         List<Map<String, String>> teamMembers = new ArrayList<>();
+         boolean isMember = false;
 
          try {
              String url = "jdbc:mysql://localhost:3306/TeamplitDB";
@@ -34,7 +33,6 @@
              Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection(url, user, password);
 
-             // 2. 팀 정보 가져오기 (팀장 확인)
              String teamInfoSql = "SELECT t_name, t_manager_id FROM Team WHERE t_id = ?";
              stmt = conn.prepareStatement(teamInfoSql);
              stmt.setString(1, teamId);
@@ -47,14 +45,12 @@
                  }
              }
 
-             // 3. 팀원의 목록을 가져오기
              String teamMembersSql = "SELECT tm.tm_m_id, tm.tm_role, m.m_name, m.m_email, m.m_phone FROM TeamMember tm " +
                                       "JOIN Member m ON tm.tm_m_id = m.m_id WHERE tm.tm_t_id = ?";
              stmt = conn.prepareStatement(teamMembersSql);
              stmt.setString(1, teamId);
              rs = stmt.executeQuery();
 
-             // 4. 팀원 목록을 표시하기 위한 리스트에 데이터 추가
              while (rs.next()) {
                  Map<String, String> member = new HashMap<>();
                  member.put("m_id", rs.getString("tm_m_id"));
@@ -62,9 +58,8 @@
                  member.put("m_role", rs.getString("tm_role"));
                  member.put("m_email", rs.getString("m_email"));
                  member.put("m_phone", rs.getString("m_phone"));
-                 teamMembers.add(member);  // teamMembers 리스트에 추가
+                 teamMembers.add(member); 
                  
-                 // 사용자가 팀에 포함되어 있으면 isMember를 true로 설정
                  if (sessionId.equals(rs.getString("tm_m_id"))) {
                      isMember = true;
                  }
@@ -81,13 +76,11 @@
              }
          }
 
-         // 팀 멤버가 아니면 메인으로 리다이렉트
          if (!isMember) {
              response.sendRedirect("main.jsp?msg=1");
              return;
          }
 
-         // 팀 멤버가 없다면 메인으로 리다이렉트
          if (teamMembers.isEmpty()) {
              out.println("<script>alert('팀에 속한 멤버가 없습니다.');</script>");
              response.sendRedirect("main.jsp?msg=1");
@@ -120,7 +113,6 @@
             </thead>
             <tbody>
                <% 
-                  // teamMembers 리스트를 순회하며 테이블에 데이터 출력
                   for (Map<String, String> member : teamMembers) {
                %>
                <tr>
@@ -138,7 +130,6 @@
                   <td><%= member.get("m_phone") %></td>
                   <td>
                      <% if (isTeamManager && !sessionId.equals(member.get("m_id"))) { %>
-                        <!-- 팀장이면서 본인이 아니면 내보내기 버튼 표시 -->
                         <a href="team_members_remove.jsp?teamId=<%= teamId %>&memberId=<%= member.get("m_id") %>" class="btn btn-danger">내보내기</a>
                      <% } %>
                   </td>

@@ -43,7 +43,6 @@
    				
   			</form>
 
-			<!-- 회원가입 링크 추가 -->
 			<p class="mt-3">
 				팀플릿이 처음이신가요? <a href="./addMember.jsp">회원가입</a>
 			</p>

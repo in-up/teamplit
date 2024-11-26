@@ -17,7 +17,6 @@
              return;
          }
 
-         // 팀 인원 수 구하기
          int teamSize = 0;
          Connection conn = null;
          PreparedStatement stmt = null;
@@ -30,14 +29,13 @@
              Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection(url, user, password);
 
-             // 팀원 수 구하는 SQL
              String memberCountSql = "SELECT COUNT(*) FROM TeamMember WHERE tm_t_id = ?";
              stmt = conn.prepareStatement(memberCountSql);
              stmt.setString(1, teamId);
              rs = stmt.executeQuery();
 
              if (rs.next()) {
-                 teamSize = rs.getInt(1); // 팀원 수
+                 teamSize = rs.getInt(1);
              }
          } catch (Exception e) {
              e.printStackTrace();
@@ -62,7 +60,6 @@
             <input type="hidden" name="teamId" value="<%= teamId %>"/>
 
             <% 
-               // 팀원 수 만큼 역할 입력 필드 생성
                for (int i = 1; i <= teamSize; i++) {
             %>
             <div class="mb-3">

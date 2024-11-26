@@ -29,7 +29,6 @@
              Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection(url, user, password);
 
-             // 1. 팀장 확인
              String teamInfoSql = "SELECT t_manager_id FROM Team WHERE t_id = ?";
              stmt = conn.prepareStatement(teamInfoSql);
              stmt.setString(1, teamId);
@@ -39,13 +38,11 @@
                  isTeamManager = true;
              }
 
-             // 2. 팀장이 아니면 내보내기 불가
              if (!isTeamManager) {
                  response.sendRedirect("main.jsp");
                  return;
              }
 
-             // 3. 내보내기 실행
              String deleteMemberSql = "DELETE FROM TeamMember WHERE tm_t_id = ? AND tm_m_id = ?";
              stmt = conn.prepareStatement(deleteMemberSql);
              stmt.setString(1, teamId);

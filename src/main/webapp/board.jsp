@@ -9,7 +9,6 @@
    </head>
    <body>
       <%
-         // 1. 팀 ID 가져오기
          String teamId = request.getParameter("id");
          if (teamId == null) {
              response.sendRedirect("main.jsp?msg=1");
@@ -28,13 +27,11 @@
              Class.forName("com.mysql.jdbc.Driver");
              conn = DriverManager.getConnection(url, user, password);
 
-             // 2. 해당 팀의 게시글 목록 조회
              String sql = "SELECT b_num, b_title, b_m_name, b_date, b_hit FROM Board WHERE b_t_id = ? ORDER BY b_num DESC";
              stmt = conn.prepareStatement(sql);
              stmt.setString(1, teamId);
              rs = stmt.executeQuery();
 
-             // 3. 결과를 리스트에 담기
              while (rs.next()) {
                  Map<String, String> post = new HashMap<>();
                  post.put("b_num", rs.getString("b_num"));
@@ -81,7 +78,6 @@
             </thead>
             <tbody>
                <% 
-                  // 게시글 목록을 순회하여 테이블에 출력
                   for (Map<String, String> post : boardPosts) {
                %>
                <tr>

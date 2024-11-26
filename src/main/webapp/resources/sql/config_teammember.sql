@@ -25,6 +25,5 @@ INSERT INTO TeamMember (tm_t_id, tm_m_id, tm_role, tm_date) VALUES
 ('3', '20230014', '', '2024-11-25'),
 ('3', '20230015', '', '2024-11-25');
 
-select * from teammember;
-
+-- select * from teammember;
 --drop table teammember;

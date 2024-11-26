@@ -27,6 +27,5 @@ INSERT INTO Member (m_id, m_password, m_name, m_date, m_email, m_phone) VALUES
 ('20230014', 'password14', '강호동', '1999-02-14', 'kanghodong@email.com', '010-4567-9012'),
 ('20230015', 'password15', '김태희', '2000-03-21', 'kimtaehee@email.com', '010-5678-0123');
 
-select * from member;
-
+-- select * from member;
 --drop table member;

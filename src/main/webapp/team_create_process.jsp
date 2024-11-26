@@ -29,7 +29,7 @@
 
     int capacity = 0;
     if (!teamCapacity.isEmpty()) {
-        capacity = Integer.parseInt(teamCapacity); // 팀 최대 정원 (숫자)
+        capacity = Integer.parseInt(teamCapacity);
     }
 
     PreparedStatement pstmt = null;

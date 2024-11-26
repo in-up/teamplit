@@ -28,7 +28,6 @@ INSERT INTO Board (b_m_id, b_m_name, b_t_id, b_title, b_content, b_date, b_hit) 
 ('20230012', '이준호', '3', '[공지사항] 서비스 이름 정하기', '세련되고 멋진 부동산 애플리케이션 이름을 정해야 해요.', '2024-11-24', 0);
 
 
-select * from board;
-desc board;
-
+-- select * from board;
+-- desc board;
 -- drop table board;
